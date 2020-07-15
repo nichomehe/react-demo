@@ -1,4 +1,7 @@
 import React from 'react';
+import './coma.less'
+
+import style from './coma.module.less' //css模块化
 
 //声明props类型
 interface ComAPropsTypes {
@@ -45,6 +48,9 @@ class ComA extends React.Component<ComAPropsTypes,ComAStateTypes> {
                     {this.list.map((item:any) =>{
                         return <p key={item}>{item}</p>
                     })}
+                </div>
+                <div className={style.button}>
+                    <div className={style['button-wrap']}>this is less module</div>
                 </div>
                 <span>{this.num}</span>
                 <button onClick={this.add}>add</button>

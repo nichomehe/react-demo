@@ -1,4 +1,4 @@
-'use strict';
+
 
 const fs = require('fs');
 const path = require('path');
@@ -17,7 +17,7 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
-// const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');  //会给引入的css加前缀和后缀作标识
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');  //会给引入的css加前缀和后缀作标识
 const paths = require('./paths');
 const modules = require('./modules');
 const getClientEnvironment = require('./env');
@@ -485,15 +485,41 @@ module.exports = function(webpackEnv) {
             // Adds support for CSS Modules, but using SASS
             // using the extension .module.scss or .module.sass
             {
+              test: sassModuleRegex,
+              use: getStyleLoaders(
+                {
+                  importLoaders: 3,
+                  sourceMap: isEnvProduction && shouldUseSourceMap,
+                  modules: {
+                    getLocalIdent: getCSSModuleLocalIdent,
+                  },
+                },
+                'sass-loader'
+              ),
+            },
+            // less
+            {
               test: lessRegex,
               exclude: lessModuleRegex,
               use: getStyleLoaders(
                 {
                   importLoaders: 3,
                   sourceMap: isEnvProduction && shouldUseSourceMap,
-                  // modules: {
-                  //   getLocalIdent: getCSSModuleLocalIdent,
-                  // },
+                },
+                'less-loader'
+              ),
+              sideEffects: true,
+            },
+            {
+              test: lessModuleRegex,
+              use: getStyleLoaders(
+                {
+                  importLoaders: 3,
+                  sourceMap: isEnvProduction && shouldUseSourceMap,
+                  modules: {
+                    getLocalIdent: getCSSModuleLocalIdent,
+                    // localIdentName: '[name]'
+                  }
                 },
                 'less-loader'
               ),
