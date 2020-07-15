@@ -1,19 +1,34 @@
 import React from 'react';
 
-class ComA extends React.Component<any,any> {
-    constructor(props: Readonly<{}>){
+//声明props类型
+interface ComAPropsTypes {
+    msg?:string,
+    onInputChange?:any
+}
+
+//声明state类型
+interface ComAStateTypes {
+    [key:string]:any
+}
+
+class ComA extends React.Component<ComAPropsTypes,ComAStateTypes> {
+    constructor(props: Readonly<ComAPropsTypes>){
         super(props)
         this.state = {
-            a:"aaa",
-            b:"bbb",
+            a:"state-a",
+            b:"state-b",
         }
 
     }
-    num:number = 1
-    add= ()=>{
+    num:number = 2
+    list = [1,2,3,4]
+    add = () => {
         this.setState({
             num:++this.num
         })
+    }
+    inputChange = (e:any)=>{
+        this.props.onInputChange && this.props.onInputChange(e.target.value)
     }
     render() {
         return (
@@ -26,8 +41,17 @@ class ComA extends React.Component<any,any> {
                     state======
                     {this.state.a}
                 </div>
-                <p>{this.num}</p>
+                <div>
+                    {this.list.map((item:any) =>{
+                        return <p key={item}>{item}</p>
+                    })}
+                </div>
+                <span>{this.num}</span>
                 <button onClick={this.add}>add</button>
+
+                <div>
+                    <input type="text" onChange={this.inputChange}/>
+                </div>
             </div>
 
         );
