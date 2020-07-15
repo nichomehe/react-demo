@@ -10,7 +10,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <p className={"width-100"}>color</p>
+          <p className="width-100 color-red">color111222</p>
           <ComA msg="msg-a" onInputChange={this.comAInputChange} />
           <Button>button</Button>
           <Card >11111</Card>
