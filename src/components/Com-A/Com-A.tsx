@@ -1,6 +1,5 @@
 import React from 'react';
 import './coma.less'
-
 import style from './coma.module.less' //css模块化
 
 //声明props类型

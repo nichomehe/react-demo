@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ComA from './components/Com-A'
+import ComA from './components/Com-A/Com-A'
 import { Card  , Button } from 'antd'
 class App extends React.Component {
   comAInputChange(val:any){
