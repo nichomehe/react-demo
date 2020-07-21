@@ -7,6 +7,7 @@ class ReduxPageOne extends React.Component<any,any> {
     constructor(props: Readonly<any>){
         super(props)
         this.state = {
+            
         }
     }
 

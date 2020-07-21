@@ -15,14 +15,7 @@ class TestA extends React.Component<any,any> {
     render() {
         return (
             <div>
-
-                    <div>
-                         <div>TestA</div>
-
-
-                    </div>
-
-
+                <div>TestA</div>
             </div>
 
         );

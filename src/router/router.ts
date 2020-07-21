@@ -4,8 +4,10 @@ import TestADetailOne from '../views/testa/children/DetailOne';
 import TestADetailTwo from '../views/testa/children/DetailTwo';
 import Emitter from '../views/eventEmitter/Emitter';
 import Producer from '../views/context/Producer';
-import ReduxPageOne from '../views/reduxviews/ReduxPageOne';
+import ReduxPageOne from '../views/reduxViews/ReduxPageOne';
 
+
+// const Home = (r:any) => require.ensure([], () => r(require('../views/Home')), 'Home');
 const routes = [
     {
         path: '/',
