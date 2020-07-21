@@ -1,22 +1,15 @@
-import React from 'react';
-// import {Route , BrowserRouter , Switch} from "react-router-dom";
+import React  from 'react';
 
 class Home extends React.Component<any,any> {
     constructor(props: Readonly<any>){
         super(props)
-        this.state = {
-            
-        }
+        this.state = {}
     }
 
-    
     render() {
         return (
             <div>
-                
-Home
-                
-
+                Home
             </div>
 
         );
