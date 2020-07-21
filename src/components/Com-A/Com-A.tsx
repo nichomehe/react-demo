@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import './coma.less'
 import style from './coma.module.less' //css模块化
 
@@ -14,13 +15,17 @@ interface ComAStateTypes {
 }
 
 class ComA extends React.Component<ComAPropsTypes,ComAStateTypes> {
-    constructor(props: Readonly<ComAPropsTypes>){
-        super(props)
+    //子组件需要通过一个静态属性contextTypes声明后，才可以访问父（祖先）组件Context对象的属性
+    static contextTypes = {
+        title: PropTypes.string,
+        methodA: PropTypes.func
+    }
+    constructor(props: Readonly<ComAPropsTypes>,context:any){
+        super(props,context)
         this.state = {
             a:"state-a",
             b:"state-b",
         }
-
     }
     num:number = 2
     list = [1,2,3,4]
@@ -42,6 +47,10 @@ class ComA extends React.Component<ComAPropsTypes,ComAStateTypes> {
                 <div className="com-a">
                     state======
                     {this.state.a}
+                </div>
+                <div className="com-a">
+                    context======
+                    {this.context.title}
                 </div>
                 <div>
                     {this.list.map((item:any) =>{

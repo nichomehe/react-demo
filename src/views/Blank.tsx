@@ -1,14 +1,17 @@
 import React from 'react';
 
-class TestB extends React.Component<any,any> {
+
+class Blank extends React.Component<any,any> {
     constructor(props: Readonly<any>){
         super(props)
         this.state = {
-
         }
-
     }
-   
+
+    componentDidMount(){
+      
+    }
+
     render() {
         return (
             <div>
@@ -19,4 +22,4 @@ class TestB extends React.Component<any,any> {
     }
 }
 
-export default TestB;
+export default Blank;

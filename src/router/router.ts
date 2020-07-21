@@ -1,14 +1,17 @@
-import App from '../App';
 import Home from '../views/Home';
-import TestA from '../views/testa/TestA';
+import Blank from '../views/Blank';
 import TestADetailOne from '../views/testa/children/DetailOne';
 import TestADetailTwo from '../views/testa/children/DetailTwo';
+import Emitter from '../views/eventEmitter/Emitter';
+import Producer from '../views/context/Producer';
+import ReduxPageOne from '../views/reduxviews/ReduxPageOne';
 
 const routes = [
     {
         path: '/',
-        component: App,
         exact: true,
+        component: Home,
+        redirect:'/home'
     },
     {
         path: '/home',
@@ -26,26 +29,66 @@ const routes = [
     {
         path: '/testa',
         name:"testa",
-        component: TestA,
-        exact: false,
+        component: Blank,
+        exact: true,
         meta:{title:"test-a",icon:''},
         children:[
             {
                 path: '/testa/testadetailone',
                 name:"testadetailone",
                 component: TestADetailOne,
-                exact: false,
+                exact: true,
                 meta:{title:"detail-one"},
             },
             {
                 path: '/testa/testadetailtwo',
                 name:"testadetailtwo",
                 component: TestADetailTwo,
-                exact: false,
+                exact: true,
                 meta:{title:"detail-two"}
             },
         ]
+    },
+    {
+        path: '/communicate',
+        name:"communicate",
+        component: Blank,
+        exact: true,
+        meta:{title:"组件通信",icon:''},
+        children:[
+            {
+                path: '/communicate/emitter',
+                name:"emitter",
+                component: Emitter,
+                exact: true,
+                meta:{title:"发布订阅者模式"}
+            },
+            {
+                path: '/communicate/producer',
+                name:"producer",
+                component: Producer,
+                exact: true,
+                meta:{title:"生产消费者模式context"}
+            },
+            {
+                path: '/communicate/redux',
+                name:"reduxpageone",
+                component: Blank,
+                exact: true,
+                meta:{title:"redux"},
+                children:[
+                    {
+                        path: '/communicate/redux/reduxpageone',
+                        name:"reduxpageone",
+                        component: ReduxPageOne,
+                        exact: true,
+                        meta:{title:"redux-demo-one"}
+                    }
+                ]
+            }
+        ]
     }
+
 ]
 
 export default routes
