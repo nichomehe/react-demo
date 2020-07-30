@@ -45,38 +45,42 @@ class SiderMenu extends React.Component<SideMenuPropsTypes,SideMenuStateTypes> {
                     >
                     {
                         this.props.routes.map( (routeItem:any) => {
-                            let menuTab   //一级菜单
+                            let firstTab   //一级菜单
                             if(routeItem.meta){
                                 if(routeItem.children && routeItem.children.length){
-                                menuTab =  
+                                firstTab =  
                                     <SubMenu  key={routeItem.path} icon={<RedditCircleFilled />} title={routeItem.meta.title || ''}  >
                                     {
                                         routeItem.children.map((childItem:any) => {
-                                            let childTab   // 二级菜单
+                                            let scdTab   // 二级菜单
                                             if(childItem.meta){
                                                 if(childItem.children && childItem.children.length){
-                                                    childTab = 
+                                                    scdTab = 
                                                     <SubMenu  key={childItem.path}  title={childItem.meta.title || ''}  >
                                                         {
                                                             // 三级菜单
-                                                            childItem.children.map( (ccItem:any) =>{
-                                                                return <Menu.Item key={ccItem.path}>{ccItem.meta.title || ''}</Menu.Item>
+                                                            childItem.children.map( (ccItem:any) => {
+                                                                let thdTab 
+                                                                if(ccItem.meta){
+                                                                    thdTab = <Menu.Item key={ccItem.path}>{ccItem.meta.title || ''}</Menu.Item>
+                                                                }
+                                                                return thdTab
                                                             })
                                                         }
                                                     </SubMenu>
                                                 }else{
-                                                    childTab = <Menu.Item key={childItem.path}>{childItem.meta.title || ''}</Menu.Item>
+                                                    scdTab = <Menu.Item key={childItem.path}>{childItem.meta.title || ''}</Menu.Item>
                                                 }
                                             } 
-                                            return childTab
+                                            return scdTab
                                         })
                                     }
                                     </SubMenu>
                                 }else{
-                                    menuTab = <Menu.Item  key={routeItem.path} icon={<RedditCircleFilled />}>{routeItem.meta.title || ''}</Menu.Item>
+                                    firstTab = <Menu.Item  key={routeItem.path} icon={<RedditCircleFilled />}>{routeItem.meta.title || ''}</Menu.Item>
                                 }
                             }
-                            return menuTab
+                            return firstTab
                         })
                     }
                     </Menu>

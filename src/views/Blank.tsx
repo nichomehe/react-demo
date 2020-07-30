@@ -1,4 +1,6 @@
 import React from 'react';
+import {  Switch , withRouter} from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
 
 
 class Blank extends React.Component<any,any> {
@@ -7,19 +9,17 @@ class Blank extends React.Component<any,any> {
         this.state = {
         }
     }
-
-    componentDidMount(){
-      
-    }
-
     render() {
         return (
-            <div>
-
+            <div className="height-100 width-100">
+                {/* <p>Blank</p> */}
+                <Switch>
+                    {renderRoutes(this.props.route.children)}
+                </Switch>
             </div>
 
         );
     }
 }
 
-export default Blank;
+export default withRouter(Blank);

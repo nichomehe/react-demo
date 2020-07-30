@@ -9,7 +9,7 @@ class Customer extends React.Component<any,any> {
         }
     }
 
-    componentDidMount(){
+    componentWillMount(){
         EventEmitter.addListener('emitMsg',(emitMsg)=>{
             this.setState({
                 msg:emitMsg

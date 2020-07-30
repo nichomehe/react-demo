@@ -1,6 +1,6 @@
 
 import axios from 'axios'
-import {filterData,setStore} from '../service/utils';
+import {filterData,setStore} from './utils';
 
 import Qs from 'qs'
 
@@ -19,9 +19,9 @@ export let ajaxHost = host ;
 
 // 根据平台类型设置请求头
 export let getHeader = () => {
-  var headers = {}
-
-  
+  var headers = {
+    'Content-Type': 'application/json'
+  }
   return headers
 }
 
@@ -29,7 +29,7 @@ export let getHeader = () => {
  * 通用ajax封装 返回Promise
  * params 参数 {url ,data, method = 'get',timeout = '1000000', header}
  */
-export const fetch = (params) => {
+const fetch = (params) => {
   // 清除空参数
   filterData(params.data || {});
   return new Promise(function (resolve, reject) {
@@ -39,7 +39,7 @@ export const fetch = (params) => {
       baseURL: '',
       method: method,
       timeout: params.timeout || 1000000,
-      headers: params.headers || {}
+      headers: params.headers || getHeader()
     }
     if (method === 'post') {
       o.data = params.data || '';
@@ -59,11 +59,11 @@ export const fetch = (params) => {
         reject('非法请求');
         return;
       }
-      if(data.error === 0){
+      if(data.code === 0){
         resolve(data);
       }else{
-        if(data.error === '-1'){
-          window.location.hash = '#/signin'
+        if(data.code === '-1'){
+          // window.location.hash = '#/signin'
           reject(data);
         }else{
           reject(data);
@@ -74,4 +74,6 @@ export const fetch = (params) => {
     });
   });
 }
+
+export default fetch
 

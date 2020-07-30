@@ -1,11 +1,18 @@
 import Home from '../views/Home';
 import Blank from '../views/Blank';
-import TestADetailOne from '../views/testa/children/DetailOne';
-import TestADetailTwo from '../views/testa/children/DetailTwo';
+import TestADetailOne from '../views/routers/children/DetailOne';
+import TestADetailTwo from '../views/routers/children/DetailTwo';
+import ChildOne from '../views/routers/children/ChildOne';
+
+import DetailQueryState from '../views/routers/children/DetailQueryState';
+import DetailUrl from '../views/routers/children/DetailUrl';
 import Emitter from '../views/eventEmitter/Emitter';
 import Producer from '../views/context/Producer';
-import ReduxPageOne from '../views/reduxViews/ReduxPageOne';
+import PageOne from '../views/reduxViews/PageOne';
+import ToDoList from '../views/todoList/List';
+import CssModule from '../views/cssModules/CssModule';
 
+// const Home = () => import(/* webpackChunkName: "home" */ '../views/Home')
 
 // const Home = (r:any) => require.ensure([], () => r(require('../views/Home')), 'Home');
 const routes = [
@@ -25,29 +32,67 @@ const routes = [
     {
         path: '/index',
         component: Home,
-        exact: true,
         redirect:'/home'
     },
     {
-        path: '/testa',
-        name:"testa",
+        path: '/todolist',
+        component: ToDoList,
+        redirect:'/todolist',
+        meta:{title:"toDoList",icon:""}
+    },
+    {
+        path: '/css',
+        name:"css",
         component: Blank,
-        exact: true,
-        meta:{title:"test-a",icon:''},
+        meta:{title:"css",icon:''},
         children:[
             {
-                path: '/testa/testadetailone',
+                path: '/css/cssmodule',
+                name:"cssmodule",
+                component: CssModule,
+                meta:{title:"css模块化"},
+            }
+        ]
+    },
+    {
+        path: '/routers',
+        name:"routers",
+        component: Blank,
+        // exact: true,
+        meta:{title:"路由",icon:''},
+        children:[
+            {
+                path: '/routers/testadetailone',
                 name:"testadetailone",
                 component: TestADetailOne,
-                exact: true,
-                meta:{title:"detail-one"},
+                // exact: true,
+                meta:{title:"组件内嵌套子路由"},
+                
             },
             {
-                path: '/testa/testadetailtwo',
+                path: '/routers/testadetailone/one',
+                name:"testadetailoneone",
+                component: ChildOne,
+                // exact: true
+            },
+            {
+                path: '/routers/testadetailtwo',
                 name:"testadetailtwo",
                 component: TestADetailTwo,
-                exact: true,
-                meta:{title:"detail-two"}
+                // exact: true,
+                meta:{title:"路由传参"},
+            },
+            {
+                path: '/routers/detailquerystate',
+                name:"detailquerystate",
+                component: DetailQueryState,
+                // exact: true
+            },
+            {
+                path: '/routers/detailurl/:name',
+                name:"detailurl",
+                component: DetailUrl,
+                // exact: true
             },
         ]
     },
@@ -55,36 +100,36 @@ const routes = [
         path: '/communicate',
         name:"communicate",
         component: Blank,
-        exact: true,
+        // exact: true,
         meta:{title:"组件通信",icon:''},
         children:[
             {
                 path: '/communicate/emitter',
                 name:"emitter",
                 component: Emitter,
-                exact: true,
+                // exact: true,
                 meta:{title:"发布订阅者模式"}
             },
             {
                 path: '/communicate/producer',
                 name:"producer",
                 component: Producer,
-                exact: true,
+                // exact: true,
                 meta:{title:"生产消费者模式context"}
             },
             {
                 path: '/communicate/redux',
                 name:"reduxpageone",
                 component: Blank,
-                exact: true,
+                // exact: true,
                 meta:{title:"redux"},
                 children:[
                     {
-                        path: '/communicate/redux/reduxpageone',
+                        path: '/communicate/redux/pageone',
                         name:"reduxpageone",
-                        component: ReduxPageOne,
-                        exact: true,
-                        meta:{title:"redux-demo-one"}
+                        component: PageOne,
+                        // exact: true,
+                        meta:{title:"demo-one"}
                     }
                 ]
             }

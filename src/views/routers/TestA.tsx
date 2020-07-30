@@ -1,22 +1,21 @@
 import React from 'react';
+import {withRouter} from "react-router-dom";
 
-class TestADetailTwo extends React.Component<any,any> {
+class TestA extends React.Component<any,any> {
     constructor(props: Readonly<any>){
         super(props)
         this.state = {
 
         }
-
     }
-   
     render() {
         return (
             <div>
-                TestADetail-Two
+                <div>TestA</div>
             </div>
 
         );
     }
 }
 
-export default TestADetailTwo;
+export default withRouter(TestA);

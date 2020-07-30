@@ -1,25 +1,22 @@
 import React from 'react';
-import {withRouter} from "react-router-dom";
 
-
-class TestA extends React.Component<any,any> {
+class ChildOne extends React.Component<any,any> {
     constructor(props: Readonly<any>){
         super(props)
         this.state = {
 
         }
+
     }
-
-
    
     render() {
         return (
             <div>
-                <div>TestA</div>
+                ChildOne
             </div>
 
         );
     }
 }
 
-export default withRouter(TestA);
+export default ChildOne;

@@ -1,6 +1,7 @@
 'use strict';
 
 const fs = require('fs');
+const path = require("path")
 const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 const evalSourceMapMiddleware = require('react-dev-utils/evalSourceMapMiddleware');
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
@@ -103,6 +104,11 @@ module.exports = function(proxy, allowedHost) {
     // `proxy` is run between `before` and `after` `webpack-dev-server` hooks
     proxy,
     before(app, server) {
+      app.all(/^(\/mockdata)|(\/right)/, function(req, res) {
+        let thePath = req.path.replace(/right/, 'mockdata');
+        const apiFile = path.join(__dirname,'../', thePath + ".json")
+        return res.sendFile(apiFile)
+      })
       // Keep `evalSourceMapMiddleware` and `errorOverlayMiddleware`
       // middlewares before `redirectServedPath` otherwise will not have any effect
       // This lets us fetch source contents from webpack for the error overlay
