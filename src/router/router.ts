@@ -1,15 +1,15 @@
 import Home from '../views/Home';
 import Blank from '../views/Blank';
-import TestADetailOne from '../views/routers/children/DetailOne';
-import TestADetailTwo from '../views/routers/children/DetailTwo';
-import ChildOne from '../views/routers/children/ChildOne';
+import TestADetailOne from '../views/routersPage/children/DetailOne';
+import TestADetailTwo from '../views/routersPage/children/DetailTwo';
+import ChildOne from '../views/routersPage/children/ChildOne';
 
-import DetailQueryState from '../views/routers/children/DetailQueryState';
-import DetailUrl from '../views/routers/children/DetailUrl';
+import DetailQueryState from '../views/routersPage/children/DetailQueryState';
+import DetailUrl from '../views/routersPage/children/DetailUrl';
 import Emitter from '../views/eventEmitter/Emitter';
 import Producer from '../views/context/Producer';
 import PageOne from '../views/reduxViews/PageOne';
-import ToDoList from '../views/todoList/List';
+import List from '../views/mock/List';
 import CssModule from '../views/cssModules/CssModule';
 
 // const Home = () => import(/* webpackChunkName: "home" */ '../views/Home')
@@ -35,10 +35,10 @@ const routes = [
         redirect:'/home'
     },
     {
-        path: '/todolist',
-        component: ToDoList,
-        redirect:'/todolist',
-        meta:{title:"toDoList",icon:""}
+        path: '/mock',
+        component: List,
+        exact: true,
+        meta:{title:"mock",icon:""}
     },
     {
         path: '/css',
@@ -108,7 +108,7 @@ const routes = [
                 name:"emitter",
                 component: Emitter,
                 // exact: true,
-                meta:{title:"发布订阅者模式"}
+                meta:{title:"发布订阅者模式emit"}
             },
             {
                 path: '/communicate/producer',

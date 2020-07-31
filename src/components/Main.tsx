@@ -45,7 +45,6 @@ class Main extends React.Component<any,any> {
     }
 
     render(){
-        // debugger
         return (
             <div className="flex-column height-100">
               <Layout className="width-100 height-100">
@@ -57,7 +56,7 @@ class Main extends React.Component<any,any> {
                   <MenuSider routes={routes} selectedKeys={this.state.selectedKeys} openKeys={this.state.openKeys} tabClick={this.menuClick}></MenuSider>
                   <Layout style={{ padding: '0 24px 24px' }}>
                     <Content className="site-layout-background padding-24">
-                        <div className="width-100 height-100 flex-1 flex-column">
+                        <div className="width-100 height-100 flex-column">
                             <Switch>
                                 {renderRoutes(routes)} 
                                 {/* {renderRoutes(this.renderFirstLevRoutes(routes))} */}

@@ -2,27 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {Button} from 'antd'
-import {changeThemeColor , changeFontSize } from '../../redux/action'
+import {changeThemeColor , changeFontSize } from '../../store/action'
 
-// 读取 store 内的数据
+
+//  vue的mapState
 const mapStateToProps = (state:any)=>{
-    // 组件内 this.props.themeColor 取值
+
+    // 组件内 this.props.themeColor 读取
     return {
-        themeColor:state.theme.themeColor,
+        themeColor:state.themeColor.themeColor,
         fontSize:state.fontSize.fontSize
     }
-    // return {...state}
     // 得到的state
     // state = {
-    //     theme:{thmeColor:'red'},
+    //     thmeColor:{thmeColor:'red'},
     //     fontSize:{fontSize:14}
     // }
 }
-const mapDispatchToProps = (dispatch: any) => ({
+
+// vue的mapMutations
+const mapDispatchToProps = (dispatch: any) => ({  
     // 组件内 this.props.setThemeColor(color) 调用
     setThemeColor: (themeColor:string) => dispatch(changeThemeColor(themeColor)),
     setFontSize: (fontSize:string|number) => dispatch(changeFontSize(fontSize))
 })
+
 
 @(connect( mapStateToProps , mapDispatchToProps ) as any)
 class ReduxPageOne extends React.Component<any,any> {
@@ -32,7 +36,7 @@ class ReduxPageOne extends React.Component<any,any> {
             
         }
     }
-
+    
     static propTypes = {
         themeColor: PropTypes.string
     }
@@ -50,11 +54,15 @@ class ReduxPageOne extends React.Component<any,any> {
             <div>
                 {/* ReduxPageOne */}
                 <div className="margin-bottom-20">
-                    <p className="margin-bottom-20">themeColor:{this.props.themeColor}</p>
+                    <p className="margin-bottom-20">themeColor:
+                        <span className="bg-theme fw padding-10 margin-10" style={{ background:  this.props.themeColor}}>{this.props.themeColor}</span>
+                    </p>
                     <Button type="dashed" onClick={this.colorBtnClick}>修改 themeColor 为 green</Button>
                 </div>
                 <div className="margin-bottom-20">
-                    <p className="margin-bottom-20">fontSize:{this.props.fontSize}</p>
+                    <p className="margin-bottom-20">fontSize:
+                        <span className="bg-theme fw padding-10 margin-10" style={{ fontSize:  this.props.fontSize}}>{this.props.fontSize}</span>
+                    </p>
                     <Button type="dashed" onClick={this.fontBtnClick}>修改 fontSize 为 18</Button>
                 </div>
                 

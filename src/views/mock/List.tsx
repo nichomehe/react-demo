@@ -1,9 +1,9 @@
 import React from 'react';
 import {withRouter} from "react-router-dom";
 import { Button } from 'antd'
-import fetch from '../../common/js/fetch'
 
-class ToDoList extends React.Component<any,any> {
+class ToDoList  extends React.Component<any,any> {
+    [x: string]: any;
     constructor(props: Readonly<any>){
         super(props)
         this.state = {
@@ -23,7 +23,8 @@ class ToDoList extends React.Component<any,any> {
         })
     }
     componentWillMount(){
-        fetch({
+        // debugger
+        this.$fetch({
             url:'mockdata/list'
         }).then((res:any)=>{
             this.setState({
@@ -31,6 +32,7 @@ class ToDoList extends React.Component<any,any> {
             })
         })
     }
+    
     
     render() {
         return (
