@@ -3,7 +3,6 @@ import {withRouter} from "react-router-dom";
 import { Button } from 'antd'
 
 class ToDoList  extends React.Component<any,any> {
-    [x: string]: any;
     constructor(props: Readonly<any>){
         super(props)
         this.state = {
@@ -37,11 +36,13 @@ class ToDoList  extends React.Component<any,any> {
     render() {
         return (
             <div>
-                {
-                    this.state.list.map((item:number,index:number)=>{
-                        return <span className="color-9 f-14 margin-left-10" key={index}>{item}</span>
-                    })
-                }
+                <div>
+                    {
+                        this.state.list.map((item:number,index:number)=>{
+                            return <span className="color-9 f-14 margin-left-10" key={index}>{item}</span>
+                        })
+                    }
+                </div>
 
                 <div className="margin-top-20">
                     <Button className="margin-bottom-10 margin-right-10" onClick={this.addListItem}>add</Button>

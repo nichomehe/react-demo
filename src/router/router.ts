@@ -10,6 +10,8 @@ import Emitter from '../views/eventEmitter/Emitter';
 import Producer from '../views/context/Producer';
 import PageOne from '../views/reduxViews/PageOne';
 import List from '../views/mock/List';
+import Mixin from '../views/mixinPage/Mixin';
+
 import CssModule from '../views/cssModules/CssModule';
 
 // const Home = () => import(/* webpackChunkName: "home" */ '../views/Home')
@@ -39,6 +41,12 @@ const routes = [
         component: List,
         exact: true,
         meta:{title:"mock",icon:""}
+    },
+    {
+        path: '/mixin',
+        component: Mixin,
+        exact: true,
+        meta:{title:"自定义装饰器mixin",icon:""}
     },
     {
         path: '/css',

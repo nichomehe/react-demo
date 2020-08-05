@@ -66,3 +66,8 @@ declare module '*.module.sass' {
 }
 
 declare module '*.less'
+declare module '*.tsx' {
+  const keys: { [key: string]: string };
+  export default keys;
+}
+

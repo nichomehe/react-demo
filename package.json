@@ -5,6 +5,7 @@
   "homepage": ".",
   "dependencies": {
     "@babel/core": "7.9.0",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
     "@svgr/webpack": "4.3.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -57,6 +58,7 @@
     "react-lazyload": "^3.0.0",
     "react-redux": "^7.2.0",
     "react-router": "^5.2.0",
+    "redux-actions": "^2.6.5",
     "resolve": "1.15.0",
     "resolve-url-loader": "3.1.1",
     "sass-loader": "^8.0.2",
@@ -97,6 +99,7 @@
     "@types/react-redux": "^7.1.9",
     "@types/react-router-config": "^5.0.1",
     "@types/react-router-dom": "^5.1.5",
+    "@types/redux-actions": "^2.6.1",
     "axios": "^0.19.2",
     "event": "^1.0.0",
     "less": "^3.12.0",
@@ -155,6 +158,14 @@
     ]
   },
   "babel": {
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ],
     "presets": [
       "react-app"
     ]

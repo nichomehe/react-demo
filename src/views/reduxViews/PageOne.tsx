@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 import {Button} from 'antd'
 import {changeThemeColor , changeFontSize } from '../../store/action'
 
@@ -13,11 +12,6 @@ const mapStateToProps = (state:any)=>{
         themeColor:state.themeColor.themeColor,
         fontSize:state.fontSize.fontSize
     }
-    // 得到的state
-    // state = {
-    //     thmeColor:{thmeColor:'red'},
-    //     fontSize:{fontSize:14}
-    // }
 }
 
 // vue的mapMutations
@@ -28,6 +22,7 @@ const mapDispatchToProps = (dispatch: any) => ({
 })
 
 
+
 @(connect( mapStateToProps , mapDispatchToProps ) as any)
 class ReduxPageOne extends React.Component<any,any> {
     constructor(props: Readonly<any>){
@@ -36,11 +31,6 @@ class ReduxPageOne extends React.Component<any,any> {
             
         }
     }
-    
-    static propTypes = {
-        themeColor: PropTypes.string
-    }
-
 
     colorBtnClick = () => {
         this.props.setThemeColor('green')
