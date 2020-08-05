@@ -16,10 +16,10 @@ class Consumer extends React.Component<any,any> {
     }
     render() {
         return (
-            <div>
+            <div className="bg-f padding-20">
                 <div className="margin-bottom-20">
                     <span>Consumer</span>
-                    <span className="color-red">Consumer context:{this.context.title}</span>
+                    {/* <span className="color-red">Consumer context:{this.context.title}</span> */}
                 </div>
                 <ConsumerDetail/>
             </div>

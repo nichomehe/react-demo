@@ -7,7 +7,8 @@ import ChildOne from '../views/routersPage/children/ChildOne';
 import DetailQueryState from '../views/routersPage/children/DetailQueryState';
 import DetailUrl from '../views/routersPage/children/DetailUrl';
 import Emitter from '../views/eventEmitter/Emitter';
-import Producer from '../views/context/Producer';
+import OldProducer from '../views/context/OldProducer';
+import NewProducer from '../views/context/NewProducer';
 import PageOne from '../views/reduxViews/PageOne';
 import List from '../views/mock/List';
 import Mixin from '../views/mixinPage/Mixin';
@@ -119,11 +120,25 @@ const routes = [
                 meta:{title:"发布订阅者模式emit"}
             },
             {
-                path: '/communicate/producer',
-                name:"producer",
-                component: Producer,
+                path: '/communicate/context',
+                name:"context",
+                component: Blank,
                 // exact: true,
-                meta:{title:"生产消费者模式context"}
+                meta:{title:"context(生产消费者模式)"},
+                children:[
+                    {
+                        path: '/communicate/context/old',
+                        name:"oldcontext",
+                        component: OldProducer,
+                        meta:{title:"老版context"}
+                    },
+                    {
+                        path: '/communicate/context/new',
+                        name:"newcontext",
+                        component: NewProducer,
+                        meta:{title:"新版context"}
+                    },
+                ]
             },
             {
                 path: '/communicate/redux',

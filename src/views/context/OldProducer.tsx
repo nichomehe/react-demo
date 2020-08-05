@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import Consumer from './children/Consumer'
-class Producer extends React.Component<any,any> {
-    // 声明Context对象属性
+class OldProducer extends React.Component<any,any> {
+    // 父组件在getChildContext方法中定义数据的时候，一定要先在childContextTypes中进行声明，否则会报错
     static childContextTypes = {
         title: PropTypes.string,
         methodA: PropTypes.func
     }
-    // 返回Context对象，方法名固定的  之后子孙组件 通过声明后都可this.context获取
+    // 返回Context对象，方法名固定  之后子孙组件 通过声明类型后都可this.context获取
     getChildContext () {
         return {
             title: 'producer-title',
@@ -26,7 +26,7 @@ class Producer extends React.Component<any,any> {
     render() {
         return (
             <div>
-                <div className="margin-bottom-20">Producer</div>
+                <div className="margin-bottom-20">OldProducer</div>
                 <Consumer/>
             </div>
 
@@ -34,4 +34,4 @@ class Producer extends React.Component<any,any> {
     }
 }
 
-export default Producer;
+export default OldProducer;
