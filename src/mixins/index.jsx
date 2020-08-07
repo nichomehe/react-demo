@@ -2,29 +2,25 @@
 import React from 'react';
 
 export default function (TargetComponent){
-        const mixinComponent = class MixinComponent extends TargetComponent{
+        return class Mixin extends React.Component{
             constructor(props){
                 super(props)
                 this.state = {
-                    mixinMsg:"这是mixin里的msg"
+                    mixinMsg:"这是mixin里的msg",
+                    alertMixinMsg : () => {
+                        alert(this.state.mixinMsg)
+                    }
                 }
             }
-            alertMixinMsg(){
-                alert(this.state.mixinMsg)
-            }
+
             render(){
-                // debugger
                 return (
                     <div>
-                        mixins======
-                        {/* Mixin */}
-
-                        <TargetComponent/>
+                        {/* MixinComponent */}
+                        {/* 将自身state下的属性混入到 TargetComponent 的 props中 */}
+                        <TargetComponent {...this.props} {...this.state}/>
                     </div>
-        
-                );                
+                )              
             }
         }
-        return mixinComponent
-
 }

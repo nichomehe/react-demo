@@ -1,3 +1,4 @@
+import React from 'react'
 import Home from '../views/Home';
 import Blank from '../views/Blank';
 import TestADetailOne from '../views/routersPage/children/DetailOne';
@@ -11,9 +12,12 @@ import OldProducer from '../views/context/OldProducer';
 import NewProducer from '../views/context/NewProducer';
 import PageOne from '../views/reduxViews/PageOne';
 import List from '../views/mock/List';
-import Mixin from '../views/mixinPage/Mixin';
+import MixinPage from '../views/mixinPage/MixinPage';
 
 import CssModule from '../views/cssModules/CssModule';
+
+
+// const Home = React.lazy(() => import('../views/Home'));
 
 // const Home = () => import(/* webpackChunkName: "home" */ '../views/Home')
 
@@ -45,7 +49,7 @@ const routes = [
     },
     {
         path: '/mixin',
-        component: Mixin,
+        component: MixinPage,
         exact: true,
         meta:{title:"自定义装饰器mixin",icon:""}
     },

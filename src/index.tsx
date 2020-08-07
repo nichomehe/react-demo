@@ -14,7 +14,7 @@ import './common/css/common.less';
 
 import fetch from './common/js/fetch'
 
-(React.Component.prototype as any).$fetch = fetch
+React.Component.prototype.$fetch = fetch
 
 const store = createStore(allReducers)
 

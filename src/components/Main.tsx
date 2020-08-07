@@ -5,7 +5,7 @@ import { createFromIconfontCN } from '@ant-design/icons';
 import { Layout  } from 'antd';
 import routes from '../router/router';
 
-import MenuSider from './MenuSider'
+import MenuSider from './MenuSider';
 
 const { Header, Content } = Layout;
 
@@ -30,20 +30,6 @@ class Main extends React.Component<any,any> {
         }))
         this.props.history && this.props.history.push(path)
     }
-
-    // 递归 将子路由children提出来和父路由一级进行注册， 也可在父页面里单独进行子路由的注册
-    renderFirstLevRoutes(routes:Array<any>,targetRoutes:Array<any>=routes){
-      let self = this
-      let firstLevelRoutes = [...targetRoutes]
-      routes.forEach((route:any)=>{
-        if(route.children && route.children.length){
-          firstLevelRoutes = firstLevelRoutes.concat([...route.children])
-          firstLevelRoutes = self.renderFirstLevRoutes(route.children,firstLevelRoutes)
-        }
-      })
-      return firstLevelRoutes
-    }
-
     render(){
         return (
             <div className="flex-column height-100">

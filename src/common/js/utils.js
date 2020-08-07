@@ -34,4 +34,19 @@ export const filterData = (data) => {
       }
       return data;
     }
-  }
+}
+
+
+
+// 递归 将子路由children提出来和父路由一级进行注册， 也可在父页面里单独进行子路由的注册
+export const renderFirstLevRoutes = (routes,targetRoutes) => {
+  let self = this
+  let firstLevelRoutes = [...targetRoutes]
+  routes.forEach((route)=>{
+    if(route.children && route.children.length){
+      firstLevelRoutes = firstLevelRoutes.concat([...route.children])
+      firstLevelRoutes = self.renderFirstLevRoutes(route.children,firstLevelRoutes)
+    }
+  })
+  return firstLevelRoutes
+}
