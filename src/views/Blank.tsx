@@ -2,7 +2,7 @@ import React from 'react';
 import {  Switch , withRouter} from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
-
+// 渲染子路由
 class Blank extends React.Component<any,any> {
     constructor(props: Readonly<any>){
         super(props)

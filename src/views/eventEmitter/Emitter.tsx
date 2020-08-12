@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'antd';
 import EventEmitter from './eventEmitter'
 import Customer from './Customer'
+
 class Emitter extends React.Component<any,any> {
     constructor(props: Readonly<any>){
         super(props)
@@ -10,12 +11,8 @@ class Emitter extends React.Component<any,any> {
         }
     }
 
-    componentDidMount(){
-
-    }
-
     emitMsg = () => {
-        EventEmitter.emit('emitMsg','我是Emitter发出的消息噢～～')
+        EventEmitter.emit('emitMsg','我是Emitter发出的消息噢～')
     }
     
     render() {

@@ -6,7 +6,7 @@ export default function (TargetComponent){
             constructor(props){
                 super(props)
                 this.state = {
-                    mixinMsg:"这是mixin里的msg",
+                    mixinMsg:"I'm from Mixin~",
                     alertMixinMsg : () => {
                         alert(this.state.mixinMsg)
                     }

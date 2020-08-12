@@ -46,6 +46,9 @@ class Main extends React.Component<any,any> {
                             <Switch>
                                 {renderRoutes(routes)} 
                                 {/* {renderRoutes(this.renderFirstLevRoutes(routes))} */}
+
+                                {/* <Route exact path="/routers/testadetailone/one" component={ChildOne} />     */}
+
                             </Switch>
                         </div>
                     </Content>

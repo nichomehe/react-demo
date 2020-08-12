@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import Home from '../views/Home';
 import Blank from '../views/Blank';
 import TestADetailOne from '../views/routersPage/children/DetailOne';
@@ -10,7 +10,7 @@ import DetailUrl from '../views/routersPage/children/DetailUrl';
 import Emitter from '../views/eventEmitter/Emitter';
 import OldProducer from '../views/context/OldProducer';
 import NewProducer from '../views/context/NewProducer';
-import PageOne from '../views/reduxViews/PageOne';
+import PageOne from '../views/reduxPage/PageOne';
 import List from '../views/mock/List';
 import MixinPage from '../views/mixinPage/MixinPage';
 
