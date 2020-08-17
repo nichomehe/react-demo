@@ -2,19 +2,27 @@ import React from 'react';
 import {withRouter} from "react-router-dom";
 import { Button } from 'antd'
 
-class ToDoList  extends React.Component<any,any> {
+function FuncList (){
+    return <div>Component By Func</div>
+}
+
+
+class List  extends React.Component<any,any> {
     constructor(props: Readonly<any>){
         super(props)
         this.state = {
             list:[]
         }
     }
-    addListItem = ()=>{
+    addListItem = () => {
         this.setState({
             list:[...this.state.list,this.state.list.length+1]
         })
+        this.setState((state:any,props:any)=>{
+
+        })
     }
-    delListItem = ()=>{
+    delListItem = () => {
         let list = this.state.list
         list.pop()
         this.setState({
@@ -48,10 +56,11 @@ class ToDoList  extends React.Component<any,any> {
                     <Button className="margin-bottom-10 margin-right-10" onClick={this.addListItem}>add</Button>
                     <Button onClick={this.delListItem}>del</Button>
                 </div>
+                <FuncList/>
             </div>
 
         );
     }
 }
 
-export default withRouter(ToDoList);
+export default withRouter(List);

@@ -2,6 +2,10 @@ import React from 'react';
 import {withRouter} from "react-router-dom";
 import style from './css/test.module.less'  //css模块化
 
+// 1.避免命名冲突
+// 2.避免样式直接作用于全局，影响其他页面
+
+
 class CssModule extends React.Component<any,any> {
     constructor(props: Readonly<any>){
         super(props)
@@ -13,7 +17,7 @@ class CssModule extends React.Component<any,any> {
         return (
             <div>
                 {/* 局部css */}
-                <div className={style.red}>局部css</div>
+                <div className={style.bgred}>局部css</div>
 
                 {
                 /* 局部和全局混合css */
@@ -28,3 +32,7 @@ class CssModule extends React.Component<any,any> {
 }
 
 export default withRouter(CssModule);
+
+
+
+

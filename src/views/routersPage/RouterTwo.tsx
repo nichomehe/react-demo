@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'antd'
 
-class TestADetailTwo extends React.Component<any,any> {
+class RouterTwo extends React.Component<any,any> {
     constructor(props: Readonly<any>){
         super(props)
         this.state = {
@@ -41,4 +41,4 @@ class TestADetailTwo extends React.Component<any,any> {
     }
 }
 
-export default TestADetailTwo;
+export default RouterTwo;

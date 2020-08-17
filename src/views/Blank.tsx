@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Switch , withRouter} from 'react-router-dom';
+import {  Switch } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
 // 渲染子路由
@@ -10,6 +10,7 @@ class Blank extends React.Component<any,any> {
         }
     }
     render() {
+        // debugger
         return (
             <div className="height-100 width-100">
                 {/* <p>Blank</p> */}
@@ -22,4 +23,4 @@ class Blank extends React.Component<any,any> {
     }
 }
 
-export default withRouter(Blank);
+export default Blank;

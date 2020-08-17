@@ -35,3 +35,16 @@ ReactDOM.render(
 serviceWorker.unregister();
 
 
+
+
+
+
+
+// 项目创建  =》 webpack配置文件  =》  index入口文件   =》  组件声明   =》   react几大特性   =》   生命周期  =》 
+// 路由  =》  组件通信（4）  =》  mixin（装饰器 高阶组件）   =》   css模块化
+
+
+
+
+// 有嵌套关系的（父子/在一条垂直组件链伤的）：props、context、eventBus、redux
+// 没嵌套关系的（兄弟/父组件不是同一个的）：eventBus、redux

@@ -1,5 +1,8 @@
 import React from 'react'
 
- const NewContext = React.createContext( {} as any )
+const { Provider , Consumer } = React.createContext( {} as any ) 
 
- export default NewContext
+export {
+    Provider,
+    Consumer
+} 
