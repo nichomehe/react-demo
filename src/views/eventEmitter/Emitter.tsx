@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import EventEmitter from './eventEmitter'
+import eventBus from './eventBus'
 import Customer from './Customer'
 
 class Emitter extends React.Component<any,any> {
@@ -12,7 +12,7 @@ class Emitter extends React.Component<any,any> {
     }
 
     emitMsg = () => {
-        EventEmitter.emit('emitMsg','我是Emitter发出的消息噢～')
+        eventBus.emit('emitMsg','我是Emitter发出的消息噢～')
     }
     
     render() {

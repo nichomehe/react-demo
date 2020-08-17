@@ -1,8 +1,11 @@
-// import React from 'react'
-import Home from '../views/Home';
+import React from 'react'
+import pMinDelay from 'p-min-delay'
+import loadable from '@loadable/component'
+
+// import Home from '../views/Home';
 import Blank from '../views/Blank';
-import TestADetailOne from '../views/routersPage/children/DetailOne';
-import TestADetailTwo from '../views/routersPage/children/DetailTwo';
+import RouterOne from '../views/routersPage/RouterOne';
+import RouterTwo from '../views/routersPage/RouterTwo';
 import ChildOne from '../views/routersPage/children/ChildOne';
 
 import DetailQueryState from '../views/routersPage/children/DetailQueryState';
@@ -17,9 +20,10 @@ import MixinPage from '../views/mixinPage/MixinPage';
 import CssModule from '../views/cssModules/CssModule';
 
 
-// const Home = React.lazy(() => import('../views/Home'));
+const Home = React.lazy(() => import(/* webpackChunkName: "home" */ '../views/Home'));
 
-// const Home = () => import(/* webpackChunkName: "home" */ '../views/Home')
+// const Home = loadable(() => import(/* webpackChunkName: "home" */ '../views/Home'))
+// const Home = loadable(() => pMinDelay(import(/* webpackChunkName: "List" */ '../views/Home'), 1000), {fallback: <div>...loading</div>})
 
 // const Home = (r:any) => require.ensure([], () => r(require('../views/Home')), 'Home');
 const routes = [
@@ -75,23 +79,23 @@ const routes = [
         meta:{title:"路由",icon:''},
         children:[
             {
-                path: '/routers/testadetailone',
-                name:"testadetailone",
-                component: TestADetailOne,
+                path: '/routers/routerone',
+                name:"routerone",
+                component: RouterOne,
                 // exact: true,
                 meta:{title:"组件内嵌套子路由"},
                 
             },
             {
-                path: '/routers/testadetailone/one',
-                name:"testadetailoneone",
+                path: '/routers/routerone/one',
+                name:"routeroneone",
                 component: ChildOne,
                 // exact: true
             },
             {
-                path: '/routers/testadetailtwo',
-                name:"testadetailtwo",
-                component: TestADetailTwo,
+                path: '/routers/routertwo',
+                name:"routertwo",
+                component: RouterTwo,
                 // exact: true,
                 meta:{title:"路由传参"},
             },

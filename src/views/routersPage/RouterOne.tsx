@@ -1,9 +1,9 @@
 import React from 'react';
 import {  BrowserRouter  , Switch , Route , Link} from 'react-router-dom';
 
-import ChildOne from './ChildOne'
+import ChildOne from './children/ChildOne'
 
-class TestADetailOne extends React.Component<any,any> {
+class RouterOne extends React.Component<any,any> {
     constructor(props: Readonly<any>){
         super(props)
         this.state = {
@@ -18,11 +18,11 @@ class TestADetailOne extends React.Component<any,any> {
                 <BrowserRouter>
                     <div className="margin-bottom-20">
                         TestADetail-One
-                        <Link className="margin-left-15" to="/routers/testadetailone/one">show ChildOne</Link>
+                        <Link className="margin-left-15" to="/routers/routerone/one">show ChildOne</Link>
                     </div>
                     <Switch>
                         {/* 子路由页面 类似vue的 router-view 的作用 */}
-                        <Route exact path="/routers/testadetailone/one" component={ChildOne} />    
+                        <Route exact path="/routers/routerone/one" component={ChildOne} />    
                     </Switch>
                 </BrowserRouter>
             </div>
@@ -31,4 +31,4 @@ class TestADetailOne extends React.Component<any,any> {
     }
 }
 
-export default TestADetailOne;
+export default RouterOne;

@@ -458,9 +458,9 @@ module.exports = function(webpackEnv) {
               use: getStyleLoaders({
                 importLoaders: 1,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
-                // modules: {
-                //   getLocalIdent: getCSSModuleLocalIdent, //给css加前缀或后缀，会导致引入的公共样式不生效
-                // },
+                modules: {
+                  getLocalIdent: getCSSModuleLocalIdent, //模块化css类名
+                },
               }),
             },
             // Opt-in support for Less (using .scss or .sass extensions).

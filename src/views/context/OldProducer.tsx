@@ -8,8 +8,8 @@ class OldProducer extends React.Component<any,any> {
         methodA: PropTypes.func
     }
     // 返回context对象，方法名固定  子孙组件通过声明类型后可this.context获取
-    getChildContext () {
-        return {
+   getChildContext () {
+         return {
             title: 'producer-title',
             methodA: () => 'producer-method'
         }

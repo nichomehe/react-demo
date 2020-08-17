@@ -1,17 +1,25 @@
-import React from 'react';
-import {  Switch , withRouter} from 'react-router-dom';
+import React , { Suspense } from 'react';
+import {  Switch , withRouter,Route} from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { createFromIconfontCN } from '@ant-design/icons';
 import { Layout  } from 'antd';
-import routes from '../router/router';
+import router from '../router/router';
 
+import Home from '../views/Home';
+import List from '../views/mock/List';
 import MenuSider from './MenuSider';
 
 const { Header, Content } = Layout;
 
 const IconFont = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_1950826_tnscspygocc.js',
+  scriptUrl: [
+    '//at.alicdn.com/t/font_1950826_tnscspygocc.js',
+    '//at.alicdn.com/t/font_1950826_hm6f8vn9sl8.js',
+    '//at.alicdn.com/t/font_1950826_9eb5cbnc328.js',
+    '//at.alicdn.com/t/font_1950826_0u7twki9mvrm.js'
+  ]
 });
+
 
 class Main extends React.Component<any,any> {
     constructor(props:any){
@@ -30,7 +38,15 @@ class Main extends React.Component<any,any> {
         }))
         this.props.history && this.props.history.push(path)
     }
+
+    // 全局路由导航
+    componentWillReceiveProps(){
+      if(this.props.history.location.pathname === '/css/cssmodule'){
+        this.props.history.push('/home')
+      }
+    }
     render(){
+      // debugger
         return (
             <div className="flex-column height-100">
               <Layout className="width-100 height-100">
@@ -39,17 +55,18 @@ class Main extends React.Component<any,any> {
                   React Demo
                 </Header>
                 <Layout>
-                  <MenuSider routes={routes} selectedKeys={this.state.selectedKeys} openKeys={this.state.openKeys} tabClick={this.menuClick}></MenuSider>
+                  <MenuSider routes={router} selectedKeys={this.state.selectedKeys} openKeys={this.state.openKeys} tabClick={this.menuClick}></MenuSider> 
                   <Layout style={{ padding: '0 24px 24px' }}>
                     <Content className="site-layout-background padding-24">
                         <div className="width-100 height-100 flex-column">
+                          <Suspense fallback={<div>Loading...</div>}>
                             <Switch>
-                                {renderRoutes(routes)} 
-                                {/* {renderRoutes(this.renderFirstLevRoutes(routes))} */}
+                                { renderRoutes(router) }
 
-                                {/* <Route exact path="/routers/testadetailone/one" component={ChildOne} />     */}
+                                {/* <Route exact  path="/" component={Home} />          */}
 
                             </Switch>
+                          </Suspense>
                         </div>
                     </Content>
                   </Layout>

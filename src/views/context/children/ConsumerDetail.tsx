@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import NewContext from '../context'
+import { Consumer } from '../context'
 
 
 class ConsumerDetail extends React.Component<any,any> {
@@ -22,7 +22,7 @@ class ConsumerDetail extends React.Component<any,any> {
                 <div className="margin-bottom-20">
                     <span className="color-f">OldConsumer context:{this.context.title}</span>
                 </div>
-                <NewContext.Consumer>
+                <Consumer>
                     {(value:any) => {
                         return (
                             <div className="margin-bottom-20">
@@ -31,7 +31,7 @@ class ConsumerDetail extends React.Component<any,any> {
                         )
                         
                     }}
-                </NewContext.Consumer>
+                </Consumer>
 
 
             </div>

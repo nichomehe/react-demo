@@ -1,5 +1,5 @@
 import React from 'react';
-import EventEmitter from './eventEmitter'
+import eventBus from './eventBus'
 
 class Customer extends React.Component<any,any> {
     constructor(props: Readonly<any>){
@@ -10,7 +10,7 @@ class Customer extends React.Component<any,any> {
     }
 
     componentWillMount(){
-        EventEmitter.addListener('emitMsg',(emitMsg)=>{
+        eventBus.addListener('emitMsg',(emitMsg)=>{
             this.setState({
                 msg:emitMsg
             })
