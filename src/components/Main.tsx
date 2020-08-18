@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { Suspense } from 'react';
 import {  Switch , withRouter,Route} from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { createFromIconfontCN } from '@ant-design/icons';
@@ -39,6 +39,7 @@ class Main extends React.Component<any,any> {
         this.props.history && this.props.history.push(path)
     }
     render(){
+      // debugger
         return (
             <div className="flex-column height-100">
               <Layout className="width-100 height-100">
@@ -51,14 +52,14 @@ class Main extends React.Component<any,any> {
                   <Layout style={{ padding: '0 24px 24px' }}>
                     <Content className="site-layout-background padding-24">
                         <div className="width-100 height-100 flex-column">
+                          <Suspense fallback={<div>Loading...</div>}>
                             <Switch>
                                 { renderRoutes(router) }
 
-                                {/* <Route exact  path="/" component={Home} /> 
-                                <Route exact path="/list" component={List} />    
-                                <Route exact path="/list/one" component={List} />           */}
+                                {/* <Route exact  path="/" component={Home} />          */}
 
                             </Switch>
+                          </Suspense>
                         </div>
                     </Content>
                   </Layout>

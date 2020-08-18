@@ -1,5 +1,8 @@
-// import React from 'react'
-import Home from '../views/Home';
+import React from 'react'
+import pMinDelay from 'p-min-delay'
+import loadable from '@loadable/component'
+
+// import Home from '../views/Home';
 import Blank from '../views/Blank';
 import RouterOne from '../views/routersPage/RouterOne';
 import RouterTwo from '../views/routersPage/RouterTwo';
@@ -17,9 +20,10 @@ import MixinPage from '../views/mixinPage/MixinPage';
 import CssModule from '../views/cssModules/CssModule';
 
 
-// const Home = React.lazy(() => import('../views/Home'));
+const Home = React.lazy(() => import(/* webpackChunkName: "home" */ '../views/Home'));
 
-// const Home = () => import(/* webpackChunkName: "home" */ '../views/Home')
+// const Home = loadable(() => import(/* webpackChunkName: "home" */ '../views/Home'))
+// const Home = loadable(() => pMinDelay(import(/* webpackChunkName: "List" */ '../views/Home'), 1000), {fallback: <div>...loading</div>})
 
 // const Home = (r:any) => require.ensure([], () => r(require('../views/Home')), 'Home');
 const routes = [

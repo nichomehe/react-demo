@@ -12,6 +12,15 @@ import './index.css';
 import './common/css/common.less';
 
 
+/*
+* 组件生命周期执行顺序
+* [加载]   constructor -> componentWillMount -> render -> componentDidMount
+* [传递props改变]   componentWillReceiveProps -> shouldComponentUpdate -> componentWillUpdate -> render -> componentDidUpdate
+* [state改变]   shouldComponentUpdate -> componentWillUpdate -> render -> componentDidUpdate
+* [自身 forceUpdate]  componentWillUpdate -> render -> componentDidUpdate
+* [父组件 forceUpdate]  == [传递props改变]
+*/
+
 import fetch from './common/js/fetch'
 
 React.Component.prototype.$fetch = fetch
@@ -40,11 +49,13 @@ serviceWorker.unregister();
 
 
 
+
+
 // 项目创建  =》 webpack配置文件  =》  index入口文件   =》  组件声明   =》   react几大特性   =》   生命周期  =》 
 // 路由  =》  组件通信（4）  =》  mixin（装饰器 高阶组件）   =》   css模块化
 
 
 
 
-// 有嵌套关系的（父子/在一条垂直组件链伤的）：props、context、eventBus、redux
+// 有嵌套关系的（父子/在一条垂直组件链上的）：props、eventBus、context、redux
 // 没嵌套关系的（兄弟/父组件不是同一个的）：eventBus、redux
