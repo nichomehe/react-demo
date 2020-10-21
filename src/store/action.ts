@@ -1,6 +1,5 @@
 
 import { createAction } from 'redux-actions'
-// const _createActions =createActions
 
 // export const changeThemeColor = (themeColor:string) => {
 //     return{

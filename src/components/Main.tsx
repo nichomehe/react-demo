@@ -38,6 +38,13 @@ class Main extends React.Component<any,any> {
         }))
         this.props.history && this.props.history.push(path)
     }
+
+    // 全局路由导航
+    componentWillReceiveProps(){
+      if(this.props.history.location.pathname === '/css/cssmodule'){
+        this.props.history.push('/home')
+      }
+    }
     render(){
       // debugger
         return (

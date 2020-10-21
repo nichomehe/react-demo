@@ -59,3 +59,7 @@ serviceWorker.unregister();
 
 // 有嵌套关系的（父子/在一条垂直组件链上的）：props、eventBus、context、redux
 // 没嵌套关系的（兄弟/父组件不是同一个的）：eventBus、redux
+
+
+
+// dialog 1:组件===== ReactDom.createPotral   2:函数====== 
