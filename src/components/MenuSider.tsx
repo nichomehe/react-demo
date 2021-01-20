@@ -5,18 +5,18 @@ const { SubMenu } = Menu;
 const {  Sider } = Layout;
 
 //声明props类型
-interface SideMenuPropsTypes {
+interface MenuSiderPropsTypes {
     routes:Array<any>,
     [key:string]:any
 }
 
 //声明state类型
-interface SideMenuStateTypes {
+interface MenuSiderStateTypes {
     [key:string]:any
 }
 
-class SiderMenu extends React.Component<SideMenuPropsTypes,SideMenuStateTypes> {
-    constructor(props: Readonly<SideMenuPropsTypes>){
+class MenuSider extends React.Component<MenuSiderPropsTypes,MenuSiderStateTypes> {
+    constructor(props: Readonly<MenuSiderPropsTypes>){
         super(props)
         this.state = {
 
@@ -28,54 +28,41 @@ class SiderMenu extends React.Component<SideMenuPropsTypes,SideMenuStateTypes> {
     subMenuOpenCahnge = (obj:any) => {
         // debugger
     }
+    //递归生成左侧菜单
+    formSubmenusChild(routeItem:any){
+        if(routeItem.meta && routeItem.meta.title){
+            let childArray = routeItem.children
+            if(childArray && childArray.length>0) {
+                let cHtml = childArray.map((item:any) => {
+                    return this.formSubmenusChild(item);
+                });
+                return <SubMenu key={routeItem.path} title={routeItem.meta.title || ''} icon={<RedditCircleFilled />}>{cHtml}</SubMenu>
+            }else{
+                return <Menu.Item key={routeItem.path} >{routeItem.meta.title || ''}</Menu.Item>
+            }
+        }
+    }
     
     render() {
+        let routes = this.props.routes || []
         return (
             <div>
-                {/* 支持到三级菜单 */}
                 <Sider width={300} className="height-100 site-layout-background">
                     <Menu
-                    mode="inline"
-                    defaultOpenKeys={['/home']}
-                    selectedKeys={this.props.selectedKeys}
-                    style={{ height: '100%', borderRight: 0 }}
-                    // openKeys = {this.props.openKeys}
-                    onClick={this.tabClick}
-                    onOpenChange={this.subMenuOpenCahnge}
+                        mode="inline"
+                        defaultOpenKeys={['/home']}
+                        selectedKeys={this.props.selectedKeys}
+                        style={{ height: '100%', borderRight: 0 }}
+                        // openKeys = {this.props.openKeys}
+                        onClick={this.tabClick}
+                        onOpenChange={this.subMenuOpenCahnge}
                     >
                     {
-                        this.props.routes.map( (routeItem:any) => {
+                        routes.map( (routeItem:any) => {
                             let firstTab   //一级菜单
                             if(routeItem.meta){
                                 if(routeItem.children && routeItem.children.length){
-                                firstTab =  
-                                    <SubMenu  key={routeItem.path} icon={<RedditCircleFilled />} title={routeItem.meta.title || ''}  >
-                                    {
-                                        routeItem.children.map((childItem:any) => {
-                                            let scdTab   // 二级菜单
-                                            if(childItem.meta){
-                                                if(childItem.children && childItem.children.length){
-                                                    scdTab = 
-                                                    <SubMenu  key={childItem.path}  title={childItem.meta.title || ''}  >
-                                                        {
-                                                            // 三级菜单
-                                                            childItem.children.map( (ccItem:any) => {
-                                                                let thdTab 
-                                                                if(ccItem.meta){
-                                                                    thdTab = <Menu.Item key={ccItem.path}>{ccItem.meta.title || ''}</Menu.Item>
-                                                                }
-                                                                return thdTab
-                                                            })
-                                                        }
-                                                    </SubMenu>
-                                                }else{
-                                                    scdTab = <Menu.Item key={childItem.path}>{childItem.meta.title || ''}</Menu.Item>
-                                                }
-                                            } 
-                                            return scdTab
-                                        })
-                                    }
-                                    </SubMenu>
+                                    firstTab =  this.formSubmenusChild(routeItem)
                                 }else{
                                     firstTab = <Menu.Item  key={routeItem.path} icon={<RedditCircleFilled />}>{routeItem.meta.title || ''}</Menu.Item>
                                 }
@@ -91,4 +78,4 @@ class SiderMenu extends React.Component<SideMenuPropsTypes,SideMenuStateTypes> {
     }
 }
 
-export default SiderMenu;
+export default MenuSider;

@@ -11,6 +11,9 @@ import 'antd/dist/antd.css';
 import './index.css';
 import './common/css/common.less';
 
+import fetch from './common/js/fetch'
+import { on , emit} from './common/js/eventEmitter'
+
 
 /*
 * 组件生命周期执行顺序
@@ -21,9 +24,10 @@ import './common/css/common.less';
 * [父组件 forceUpdate]  == [传递props改变]
 */
 
-import fetch from './common/js/fetch'
-
 React.Component.prototype.$fetch = fetch
+React.Component.prototype.$on = on
+React.Component.prototype.$emit = emit
+
 
 const store = createStore(allReducers)
 
