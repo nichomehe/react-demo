@@ -22,8 +22,22 @@ import './common/css/common.less';
 */
 
 import fetch from './common/js/fetch'
+import { on , emit} from './common/js/eventEmitter'
+
+
+/*
+* 组件生命周期执行顺序
+* [加载]   constructor -> componentWillMount -> render -> componentDidMount
+* [传递props改变]   componentWillReceiveProps -> shouldComponentUpdate -> componentWillUpdate -> render -> componentDidUpdate
+* [state改变]   shouldComponentUpdate -> componentWillUpdate -> render -> componentDidUpdate
+* [自身 forceUpdate]  componentWillUpdate -> render -> componentDidUpdate
+* [父组件 forceUpdate]  == [传递props改变]
+*/
 
 React.Component.prototype.$fetch = fetch
+React.Component.prototype.$on = on
+React.Component.prototype.$emit = emit
+
 
 const store = createStore(allReducers)
 

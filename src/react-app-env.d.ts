@@ -9,6 +9,13 @@ declare namespace NodeJS {
   }
 }
 
+// declare module '@types/react/index' {
+//   interface Component{
+//     $on: any
+//     $emit: any
+//   }
+// }
+
 declare module '*.bmp' {
   const src: string;
   export default src;

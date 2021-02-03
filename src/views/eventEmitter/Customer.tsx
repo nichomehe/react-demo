@@ -1,5 +1,4 @@
 import React from 'react';
-import eventBus from './eventBus'
 
 class Customer extends React.Component<any,any> {
     constructor(props: Readonly<any>){
@@ -10,7 +9,7 @@ class Customer extends React.Component<any,any> {
     }
 
     componentWillMount(){
-        eventBus.addListener('emitMsg',(emitMsg)=>{
+        this.$on('emitMsg',(emitMsg)=>{
             this.setState({
                 msg:emitMsg
             })
@@ -22,10 +21,7 @@ class Customer extends React.Component<any,any> {
             <div>
                 <span>Customer</span>
                 {
-                    this.state.msg &&  
-                    (  
-                        <span className="color-red margin-left-10">收到来自emitter的消息----{this.state.msg}</span>
-                    )
+                    this.state.msg &&  <span className="color-red margin-left-10">收到来自emitter的消息----{this.state.msg}</span>                  
                 }
             </div>
 
